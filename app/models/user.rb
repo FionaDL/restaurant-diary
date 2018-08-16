@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-  has_many :UnvisitedRestaurants
-  has_many :VisitedRestaurants
+  has_many :unvisitedrestaurants
+  has_many :visitedrestaurants
 
   has_secure_password
 end

@@ -1,3 +1,3 @@
-class VisitedRestaurants < ActiveRecord::Base
+class VisitedRestaurant < ActiveRecord::Base
   belongs_to :user
 end
