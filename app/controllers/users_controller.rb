@@ -1,6 +1,6 @@
 require 'rack-flash'
 
-class UserController < ApplicationController
+class UsersController < ApplicationController
   use Rack::Flash
 
 
@@ -23,10 +23,14 @@ class UserController < ApplicationController
   end
 
   post '/signup' do
-    @user = User.create(username: params[:username], password: params[:password])
-    @user.save
-    session[:id] = @user.id
-    redirect to "/users/#{@user.id}"
+   if params[:username] == "" || params[:password] == ""
+      redirect to '/signup'
+   else
+     @user = User.create(username: params[:username], password: params[:password])
+     @user.save
+     session[:id] = @user.id
+     redirect to "/users/:#{@user.id}"
+    end
   end
 
   get '/login' do

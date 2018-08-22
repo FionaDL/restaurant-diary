@@ -1,9 +1,23 @@
 
 <lable>Add a new restaurant to your diary!</lable>
-<a href="/visited/new"> New Restaurant Visited!</a>
+<a href="/visited_restaurants/new"> New Restaurant Visited!</a>
 <lable>Add a new restaurant to your wish list!</lable>
-<a href="/unvisited/new"> New Restaurant Wish!</a>
+<a href="/unvisited_restaurants/new"> New Restaurant Wish!</a>
 
 <form>
   <a class="logout1" href="/logout">Logout</a>
 </form>
+
+<div class="boxes">
+<%UnvisitedRestaurant.all.each do |restaurant|%>
+<%=restaurant.name%>
+<%=restaurant.location%><br>
+<%end%>
+</div>
+<div class="boxes">
+<%VisitedRestaurant.all.each do |restaurant|%>
+<%=restaurant.name%>
+<%=restaurant.location%>
+<%=restaurant.mythoughts%>
+<%=restaurant.rating%>
+<%end%></div>
