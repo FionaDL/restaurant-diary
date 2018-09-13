@@ -1,23 +1,27 @@
-
-<lable>Add a new restaurant to your diary!</lable>
-<a href="/visited_restaurants/new"> New Restaurant Visited!</a>
-<lable>Add a new restaurant to your wish list!</lable>
-<a href="/unvisited_restaurants/new"> New Restaurant Wish!</a>
-
-<form>
-  <a class="logout1" href="/logout">Logout</a>
-</form>
-
-<div class="boxes">
-<%UnvisitedRestaurant.all.each do |restaurant|%>
-<%=restaurant.name%>
-<%=restaurant.location%><br>
-<%end%>
+<div id="creations">
+  <a href="/visited_restaurants/new" class="button_creation"> New Restaurant for Diary</a>
+  <a href="/unvisited_restaurants/new" class="button_creation"> New Restaurant for Wish List</a>
+  <a class="button_creation" href="/logout">Logout</a>
 </div>
-<div class="boxes">
-<%VisitedRestaurant.all.each do |restaurant|%>
-<%=restaurant.name%>
-<%=restaurant.location%>
-<%=restaurant.mythoughts%>
-<%=restaurant.rating%>
-<%end%></div>
+
+<div id="wrap_box">
+  <div id="box_right">
+    <h3>Wish List:</h3>
+    <%current_user.unvisited_restaurants.all.each do |restaurant|%>
+   <div id="restaurant_box">
+    Name: <a href="/unvisited_restaurants/<%=restaurant.id%>/edit"><%=restaurant.name%></a><br> Location: <%=restaurant.location%><br>
+   </div>
+    <%end%>
+  </div>
+  <div id="box_left">
+    <h3>My Diary:</h3><br>
+    <%current_user.visited_restaurants.all.each do |restaurant|%>
+    <div id=restaurant_box>
+    Name:<a href="/visited_restaurants/<%=restaurant.id%>/edit"><%=restaurant.name%></a><br>
+     Location: <%=restaurant.location%><br>
+     Thoughts:<%=restaurant.thougts%><br>
+     Rating: <%=restaurant.rating%>
+    </div>
+    <%end%>
+  </div>
+</div>

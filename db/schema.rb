@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180727195419) do
+ActiveRecord::Schema.define(version: 2018_09_12_214722) do
 
   create_table "unvisited_restaurants", force: :cascade do |t|
-    t.string  "name"
-    t.string  "location"
+    t.string "name"
+    t.string "location"
     t.integer "user_id"
   end
 
@@ -25,10 +24,10 @@ ActiveRecord::Schema.define(version: 20180727195419) do
   end
 
   create_table "visited_restaurants", force: :cascade do |t|
-    t.string  "name"
-    t.string  "location"
-    t.string  "thougts"
-    t.integer "rating"
+    t.string "name"
+    t.string "location"
+    t.string "thougts"
+    t.string "rating"
     t.integer "user_id"
   end
 

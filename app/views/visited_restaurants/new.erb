@@ -1,12 +1,12 @@
-<h1> The new restaurant for your wish list. </h1>
-  <form method="POST" action="/unvisited_restaurants">
-    <lable>Name of the Restaurant:</lable>
+<h1 class="question_text"> Add a restaurant to your diary. </h1>
+  <form class="form_box" method="POST" action="/visited_restaurants">
+    <lable>Name of the Restaurant:</lable><br>
     <input type="text" name="name"><br>
-    <lable>Location:</lable>
+    <lable>Location:</lable><br>
     <input type="text" name="location"><br>
-    <lable> My thoughts: </lable>
-    <input type="text" name="my_thoughts">
-    <lable> Rating: </lable>
+    <lable> My thoughts: </lable><br>
+    <textarea rows="6" cols="25" name="thougts"></textarea><br>
+    <lable> Rating: </lable><br>
     <input type="radio" name="rating" value="A"> A<br>
     <input type="radio" name="rating" value="B"> B<br>
     <input type="radio" name="rating" value="C"> C<br>

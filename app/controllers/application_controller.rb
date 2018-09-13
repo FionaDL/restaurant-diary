@@ -22,5 +22,12 @@ class ApplicationController < Sinatra::Base
       	User.find(session[:id])
       end
 
+      def unique
+        a = self.all.map do |x|
+          x.name
+        end
+        a.uniq
+      end
+
     end
 end

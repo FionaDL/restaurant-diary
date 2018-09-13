@@ -1,0 +1,24 @@
+<h1 class="question_text"> Make changes to restaurant for your diary. </h1>
+  <div class="form_box">
+    <form method="POST" action="/visited_restaurants/<%=@restaurant.id%>">
+    <lable>Name of the Restaurant:</lable><br>
+    <input type="text" name="name" value="<%=@restaurant.name%>"><br>
+    <lable>Location:</lable><br>
+    <input type="text" name="location" value="<%=@restaurant.location%>"><br>
+    <lable> My thoughts: </lable><br>
+    <textarea rows="6" cols="25" name="thougts"><%=@restaurant.thougts%></textarea><br>
+    <lable> Rating: </lable><br>
+    <input type="radio" name="rating" value="A"> A<br>
+    <input type="radio" name="rating" value="B"> B<br>
+    <input type="radio" name="rating" value="C"> C<br>
+    <input type="radio" name="rating" value="D"> D<br>
+    <input type="radio" name="rating" value="F"> C<br>
+    <input type="submit" value="Submit">
+  </form>
+
+
+    <form method="post" action="/visited_restaurants/<%=@restaurant.id%>/delete">
+    <input id="hidden" type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete Restaurant">
+  </form>
+</div>

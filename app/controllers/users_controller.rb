@@ -25,6 +25,9 @@ class UsersController < ApplicationController
   post '/signup' do
    if params[:username] == "" || params[:password] == ""
       redirect to '/signup'
+   elsif User.all.detect {|user| user.username == params[:username]}
+       flash[:message] = "The username you entered already exsists. Please try again."
+       redirect to '/signup'
    else
      @user = User.create(username: params[:username], password: params[:password])
      @user.save
@@ -42,7 +45,7 @@ class UsersController < ApplicationController
   end
 
   post '/login' do
-    @user = User.find_by_username(params[:userame])
+    @user = User.find_by_username(params[:username])
     if @user && @user.password = params[:password]
       session[:id] = @user.id
       redirect to "/users/:#{@user.id}"

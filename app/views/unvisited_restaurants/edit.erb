@@ -1,0 +1,23 @@
+
+<div class="login_box">
+  <form method="post" action="/unvisited_restaurants/<%=@restaurant.id%>">
+    <input id="hidden" type="hidden" name="_method" value="PATCH">
+    <lable>Restaurant Name:</lable>
+    <input type="text" name="name" value="<%= @restaurant.name %>">
+    <lable>Location:</lable>
+    <input type="text" name="location" value="<%= @restaurant.location %>"><br>
+    <input type="submit" value="Make Changes">
+  </form>
+
+  <form method="post" action="/unvisited_restaurants/<%=@restaurant.id%>">
+    <input id="hidden" type="hidden" name="_method" value="PUT">
+    <input type="submit" value="Move Restaurant to Diary">
+  </form>
+
+
+  <form method="post" action="/unvisited_restaurants/<%=@restaurant.id%>/delete">
+  <input id="hidden" type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Restaurant">
+</form>
+
+</div>
