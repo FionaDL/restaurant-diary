@@ -52,14 +52,15 @@ class VisitedRestaurantsController < ApplicationController
 
   post '/visited_restaurants/:id' do
     if !params[:name].empty? && !params[:location].empty? && !params[:thougts].empty? && !params[:rating].empty?
-      @restaurant = current_user.visited_restaurants.find_by(params[:id])
+      binding.pry
+      @restaurant = current_user.visited_restaurants.find(params[:id])
       @restaurant.update(name: params[:name], location: params[:location], thougts: params[:thougts], rating: params[:rating])
       @restaurant.save
 
-      flash[:error] = "The restaurant has been added to your diary."
+      flash[:message] = "The restaurant has been added to your diary."
       redirect to "/users/:#{@restaurant.user_id}"
     else
-      flash[:error] = "Please enter all the information to add restaurant to your diary."
+      flash[:message] = "Please enter all the information to add restaurant to your diary."
       redirect to "/visited_restaurants/new"
     end
   end

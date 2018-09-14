@@ -13,17 +13,17 @@ class UnvisitedRestaurantsController < ApplicationController
 
   post '/unvisited_restaurants' do
     if current_user.unvisited_restaurants.find_by(name: params[:name], location: params[:location])
-      flash[:notice] = "That restaurant already exists on your wish list."
+      flash[:message] = "That restaurant already exists on your wish list."
       redirect to "/unvisited_restaurants/new"
     elsif !params[:name].empty? && !params[:location].empty?
       @restaurant = UnvisitedRestaurant.create(name: params[:name], location: params[:location])
       @restaurant.user_id = current_user.id
       @restaurant.save
 
-      flash[:error] = "The new restaurant has been added to your wish list."
+      flash[:message] = "The new restaurant has been added to your wish list."
       redirect to "/users/:#{@restaurant.user_id}"
     else
-      flash[:error] = "Please enter all the information to add a new restaurant."
+      flash[:message] = "Please enter all the information to add a new restaurant."
       redirect to "/unvisited_restaurants/new"
     end
   end
@@ -49,6 +49,7 @@ class UnvisitedRestaurantsController < ApplicationController
     end
 
   put '/unvisited_restaurants/:id' do
+
     @restaurant = current_user.unvisited_restaurants.find(params[:id])
     @visited_restaurant = VisitedRestaurant.create(name: @restaurant.name, location: @restaurant.location, user_id: @restaurant.user_id)
     @restaurant.delete
