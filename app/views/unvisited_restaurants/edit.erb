@@ -1,6 +1,6 @@
 
 <div class="login_box">
-  <form method="post" action="/unvisited_restaurants/<%=@restaurant.id%>">
+  <form method="POST" action="/unvisited_restaurants/<%=@restaurant.id%>">
     <input id="hidden" type="hidden" name="_method" value="PATCH">
     <lable>Restaurant Name:</lable>
     <input type="text" name="name" value="<%= @restaurant.name %>">
