@@ -16,6 +16,7 @@ class VisitedRestaurantsController < ApplicationController
   end
 
   post '/visited_restaurants' do
+    binding.pry
     if current_user.visited_restaurants.find_by(name: params[:name], location: params[:location])
       flash[:notice] = "That restaurant already exists in your diary."
       redirect to "/visited_restaurants/new"
